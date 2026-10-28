@@ -16,7 +16,7 @@ app = FastAPI(title="events-api")
 class Event(BaseModel):
     event_id: str = Field(pattern=r"^[A-Za-z0-9_-]{3,64}$")
     site: str = Field(min_length=1)
-    camera_id: str = Field(min_length=1)
+    camera_id: str = Field(pattern=r"^[A-Za-z0-9_-]{1,32}$")
     event_time: datetime
     kind: str = "fall"
     score: float = Field(ge=0, le=1)
